@@ -1,9 +1,10 @@
 package university.jala.databaseApp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import university.jala.databaseApp.Dto.UserDto;
+import university.jala.databaseApp.Dto.SaveUserDto;
 import university.jala.databaseApp.services.UserService;
 
 import java.util.List;
@@ -19,7 +20,25 @@ public class UserController {
         return userService.findAll();
     }
 
+    @GetMapping("/users/findById/{id}")
+    public UserDto findById(@PathVariable Long id) {
+        return userService.findById(id);
+    }
 
+    @PostMapping("/users/save")
+    public UserDto save(@RequestBody SaveUserDto saveUserDto) {
+        return userService.save(saveUserDto);
+    }
 
+    @PutMapping("/users/update/{id}")
+    public UserDto updateUser(@RequestBody UserDto userDto, @PathVariable Long id) {
+        return userService.update(userDto, id);
+    }
+
+    @DeleteMapping("/users/delete/{id}")
+    public ResponseEntity<UserDto> deleteUser(@PathVariable Long id) {
+        userService.delete(id);
+        return ResponseEntity.ok().build();
+    }
 
 }

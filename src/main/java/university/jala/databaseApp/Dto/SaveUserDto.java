@@ -1,6 +1,7 @@
 package university.jala.databaseApp.Dto;
 
-public class UserDto {
+public class SaveUserDto {
+
 
     private Integer id;
     private String firstName;
@@ -8,17 +9,19 @@ public class UserDto {
     private int age;
     private String email;
     private String username;
+    private String password;
 
-    public UserDto() {
+    public SaveUserDto() {
     }
 
-    public UserDto(Integer id, String firstName, String lastName, String email, int age, String username) {
+    public SaveUserDto(Integer id, String firstName, String lastName, String email, int age, String username, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.age = age;
         this.username = username;
+        this.password = password;
     }
 
     public Integer getId() {
@@ -67,5 +70,13 @@ public class UserDto {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
