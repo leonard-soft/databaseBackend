@@ -30,7 +30,7 @@ public class UserService {
     }
 
     public UserDto findById(Long id) {
-        UserDto userDto = new UserDto();
+        UserDto userDto;
         Optional<User> user = userRepository.findById(id);
         userDto = user.map(this::convertToUserDto).orElse(null);
         return userDto;
