@@ -1,12 +1,14 @@
 package university.jala.databaseApp.Dto;
 
+import java.util.Date;
+
 public class SaveUserDto {
 
 
     private Integer id;
     private String firstName;
     private String lastName;
-    private int age;
+    private Date birthDate;
     private String email;
     private String username;
     private String password;
@@ -14,12 +16,12 @@ public class SaveUserDto {
     public SaveUserDto() {
     }
 
-    public SaveUserDto(Integer id, String firstName, String lastName, String email, int age, String username, String password) {
+    public SaveUserDto(Integer id, String firstName, String lastName, String email, Date age, String username, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.age = age;
+        this.birthDate = age;
         this.username = username;
         this.password = password;
     }
@@ -56,12 +58,12 @@ public class SaveUserDto {
         this.email = email;
     }
 
-    public int getAge() {
-        return age;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getUsername() {

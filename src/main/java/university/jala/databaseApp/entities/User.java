@@ -3,6 +3,8 @@ package university.jala.databaseApp.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "User")
 public class User {
@@ -18,8 +20,8 @@ public class User {
     @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "age")
-    private int age;
+    @Column(name = "birthdate")
+    private Date birthDate;
 
     @Column(name = "email")
     private String email;
@@ -33,11 +35,11 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String firstName, int age, String lastName, String email,String username, String password) {
+    public User(Integer id, String firstName, Date birthDate, String lastName, String email,String username, String password) {
         this.userId = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
+        this.birthDate = birthDate;
         this.email = email;
         this.username = username;
         this.password = password;
@@ -75,12 +77,12 @@ public class User {
         this.username = username;
     }
 
-    public int getAge() {
-        return age;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getPassword(String password) {
