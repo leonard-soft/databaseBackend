@@ -40,11 +40,8 @@ public class User implements UserDetails {
     public User() {
     }
 
-<<<<<<< HEAD
+
     public User(Integer id, String firstName, Date birthDate, String lastName, String email, String username, String password) {
-=======
-    public User(Integer id, String firstName, Date birthDate, String lastName, String email,String username, String password) {
->>>>>>> c2426cf53b810d84936954c8d23cc889a0cde93c
         this.userId = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -53,8 +50,6 @@ public class User implements UserDetails {
         this.username = username;
         this.password = password;
     }
-
-    // Getters y Setters
 
     public String getFirstName() {
         return firstName;
@@ -105,13 +100,10 @@ public class User implements UserDetails {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
-<<<<<<< HEAD
-=======
     }
 
     public String getPassword(String password) {
         return this.password;
->>>>>>> c2426cf53b810d84936954c8d23cc889a0cde93c
     }
 
     public void setPassword(String password) {
