@@ -8,7 +8,9 @@ import university.jala.databaseApp.entities.Task;
 import university.jala.databaseApp.repositories.TaskViewRepository;
 import university.jala.databaseApp.services.TaskService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class TaskController {
@@ -45,9 +47,11 @@ public class TaskController {
     }
 
     @DeleteMapping("/task/delete/{id}")
-    public ResponseEntity<String> deleteTask(@PathVariable int id) {
+    public ResponseEntity<?> deleteTask(@PathVariable int id) {
         taskService.delete(id);
-        return ResponseEntity.ok("Task Deleted Successfully");
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "OK");
+        return ResponseEntity.ok(response);
     }
 
 }

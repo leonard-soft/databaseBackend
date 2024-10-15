@@ -5,6 +5,7 @@ import java.util.Date;
 public class AuthResponse {
 
     private String token;
+    private int id;
     private String name;
     private String lastname;
     private Date birtdate;
@@ -13,8 +14,9 @@ public class AuthResponse {
         this.token = error;
     }
 
-    public AuthResponse(String token, String name, String lastname, Date birthdate) {
+    public AuthResponse(String token, int id, String name, String lastname, Date birthdate) {
         this.token = token;
+        this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.birtdate = birthdate;
@@ -26,6 +28,14 @@ public class AuthResponse {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
