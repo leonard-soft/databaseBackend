@@ -1,6 +1,7 @@
 package university.jala.databaseApp.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import university.jala.databaseApp.Dto.SaveUserDto;
@@ -22,7 +23,7 @@ public class UserService {
     PasswordEncoder passwordEncoder;
 
     public UserDto convertToUserDto(User user) {
-        return new UserDto(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getAge(),  user.getUsername());
+        return new UserDto(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getBirthDate(),  user.getUsername());
     }
 
     public List<UserDto> findAll() {
@@ -41,7 +42,7 @@ public class UserService {
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setEmail(userDto.getEmail());
-        user.setAge(userDto.getAge());
+        user.setBirthDate(userDto.getBirthDate());
         user.setUsername(userDto.getUsername());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user = userRepository.save(user);
@@ -56,7 +57,7 @@ public class UserService {
             databaseUser.setFirstName(userDto.getFirstName());
             databaseUser.setLastName(userDto.getLastName());
             databaseUser.setEmail(userDto.getEmail());
-            databaseUser.setAge(userDto.getAge());
+            databaseUser.setBirthDate(userDto.getBirthDate());
             databaseUser.setUsername(userDto.getUsername());
             userRepository.save(databaseUser);
             updatedUserDto = convertToUserDto(databaseUser);

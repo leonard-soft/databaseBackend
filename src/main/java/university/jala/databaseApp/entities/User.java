@@ -1,11 +1,16 @@
 package university.jala.databaseApp.entities;
 
-
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "User")
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +23,8 @@ public class User {
     @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "age")
-    private int age;
+    @Column(name = "birthdate")
+    private Date birthDate;
 
     @Column(name = "email")
     private String email;
@@ -33,15 +38,17 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String firstName, int age, String lastName, String email,String username, String password) {
+    public User(Integer id, String firstName, Date birthDate, String lastName, String email, String username, String password) {
         this.userId = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
+        this.birthDate = birthDate;
         this.email = email;
         this.username = username;
         this.password = password;
     }
+
+    // Getters y Setters
 
     public String getFirstName() {
         return firstName;
@@ -67,6 +74,17 @@ public class User {
         this.email = email;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
     public String getUsername() {
         return username;
     }
@@ -75,16 +93,12 @@ public class User {
         this.username = username;
     }
 
-    public int getAge() {
-        return age;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getPassword(String password) {
-        return this.password;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public void setPassword(String password) {
@@ -99,4 +113,23 @@ public class User {
         return userId;
     }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
